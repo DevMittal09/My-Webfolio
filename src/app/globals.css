@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0a0a0a;
+  --color-surface: #111111;
+  --color-surface-2: #161616;
+  --color-border: #262626;
+  --color-text-primary: #f5f5f5;
+  --color-text-secondary: #a3a3a3;
+  --color-text-muted: #737373;
+  --color-accent: #8b5cf6;
+  --color-accent-hover: #7c3aed;
+  --color-accent-glow: rgba(139, 92, 246, 0.15);
+
+  --font-family-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-family-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+}
+
+body {
+  background-color: #0a0a0a;
+  background-image: radial-gradient(
+    ellipse at 50% 35%,
+    rgba(109, 40, 217, 0.12) 0%,
+    rgba(80, 20, 160, 0.05) 38%,
+    transparent 65%
+  );
+  background-attachment: fixed;
+  color: #f5f5f5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: rgba(139, 92, 246, 0.35);
+  color: #f5f5f5;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* ── Beam border animation ─────────────────────────────────── */
+@keyframes beam-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Wrapper: exposes 1px border gap */
+.beam-border {
+  position: relative;
+  padding: 1px;
+  border-radius: 0.75rem;   /* rounded-xl */
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* The rotating conic gradient — paused until hover */
+.beam-border::before {
+  content: '';
+  position: absolute;
+  inset: -50%;           /* larger than card so rotation never shows gaps */
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 320deg,
+    rgba(109, 40, 217, 0.5) 338deg,
+    rgba(139, 92, 246, 1)   345deg,
+    rgba(216, 180, 254, 0.7) 350deg,
+    transparent 360deg
+  );
+  animation: beam-rotate 2.8s linear infinite;
+  animation-play-state: paused;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.beam-border:hover::before {
+  animation-play-state: running;
+  opacity: 1;
+}
+
+/* Inner card surface: masks the pseudo-element center, shows only the 1px ring */
+.beam-border-inner {
+  position: relative;
+  background: #111111;
+  border-radius: calc(0.75rem - 1px);
+  z-index: 1;
+  height: 100%;
+}
+
