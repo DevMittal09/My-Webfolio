@@ -40,7 +40,7 @@ export default function Experience() {
                     aria-hidden="true"
                   />
 
-                  <div className="beam-border">
+                  <article className="beam-border">
                     <div className="beam-border-inner p-6 md:p-8">
                       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-5">
                         <div>
@@ -88,7 +88,7 @@ export default function Experience() {
                         ))}
                       </div>
                     </div>
-                  </div>
+                  </article>
                 </div>
               </AnimatedSection>
             ))}

@@ -186,17 +186,15 @@ export default function Hero() {
           </a>
 
           {/* View My Work */}
-          <button
-            onClick={() =>
-              document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
-            }
+          <a
+            href="#projects"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-neutral-700 text-neutral-300 text-sm font-medium hover:border-violet-500/60 hover:text-violet-400 hover:scale-105 hover:shadow-[0_0_16px_rgba(139,92,246,0.2)] active:scale-95 transition-all duration-200"
           >
             View My Work
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
-          </button>
+          </a>
         </motion.div>
 
         {/* Scroll arrow — clickable, no text */}

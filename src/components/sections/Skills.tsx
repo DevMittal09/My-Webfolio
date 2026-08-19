@@ -5,7 +5,9 @@ import { skillGroups } from "@/lib/data";
 
 const categoryColors: Record<string, string> = {
   Languages: "#a78bfa",
+  Databases: "#3b82f6",
   Frameworks: "#8b5cf6",
+  "Security & Identity": "#ef4444",
   Infrastructure: "#10b981",
   Concepts: "#f59e0b",
 };
@@ -26,7 +28,7 @@ export default function Skills() {
           />
         </AnimatedSection>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {skillGroups.map((group, i) => {
             const color = categoryColors[group.category] ?? "#a78bfa";
             return (

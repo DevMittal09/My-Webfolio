@@ -14,15 +14,16 @@ export const siteConfig = {
   name: "Dev Mittal",
   tagline: "Engineering reliable systems with real world impact",
   oneLiner:
-    "Backend focused developer building production grade systems from cloud native platforms to secure campus infrastructure.",
+    "Backend focused developer building production grade systems, from cloud native platforms and secure campus infrastructure to enterprise identity management.",
   github: "https://github.com/DevMittal09",
   linkedin: "https://www.linkedin.com/in/dev-mittal-892725285/",
   email: "connectwithdevm@gmail.com",
   leetcode: "https://leetcode.com/u/lazy_wolf09/",
   codeforces: "https://codeforces.com/profile/devmittal09",
+  url: "https://devmittal.me",
   college: "IIT Palakkad",
   degree: "BTech Civil Engineering",
-  cgpa: "8.55",
+  cgpa: "8.54",
 };
 
 export const navLinks: NavLink[] = [
@@ -43,6 +44,7 @@ export const heroStack = [
   "Kubernetes",
   "PostgreSQL",
   "Supabase",
+  "Okta CIC",
 ];
 
 export const aboutParagraphs = [
@@ -53,7 +55,7 @@ export const aboutParagraphs = [
 
 
 export const aboutStats = [
-  { label: "CGPA at IIT Palakkad", value: "8.55" },
+  { label: "CGPA at IIT Palakkad", value: "8.54" },
   { label: "LeetCode + Codeforces", value: "400+" },
   { label: "Inter IIT TechMeet Medals", value: "Gold + Bronze" },
   { label: "Production systems deployed", value: "2" },
@@ -61,9 +63,19 @@ export const aboutStats = [
 
 export const experiences: Experience[] = [
   {
+    company: "Accenture",
+    role: "Advanced Application Engineering Intern",
+    period: "May 2026 – Jul 2026",
+    tech: ["Okta CIC", "IAM", "OAuth", "Python", "LLM Automation"],
+    bullets: [
+      "Configured and provisioned client tenants on Okta Customer Identity Cloud (CIC), supporting identity & access management (IAM) for enterprise environments.",
+      "Built AI/LLM-driven automation scripts to streamline tenant configuration workflows, reducing manual operational effort.",
+    ],
+  },
+  {
     company: "IIT Palakkad",
     role: "Administrative Intern",
-    period: "Jan 2026 – Present",
+    period: "Jan 2026 – May 2026",
     github: "https://github.com/DevMittal09/GatePassSecuritySystem.git",
     tech: [
       "Next.js",
@@ -128,6 +140,27 @@ export const projects: Project[] = [
       "Resend",
     ],
     github: "https://github.com/DevMittal09/GatePassSecuritySystem.git",
+    featured: true,
+  },
+  {
+    title: "Financial Sentiment Forecasting",
+    subtitle: "Entity-Aware Transformers for Market Prediction",
+    description:
+      "An end-to-end ML pipeline that extracts entity-level sentiment from financial news and forecasts stock returns across 1, 2, and 5-day horizons.",
+    bullets: [
+      "Curated and preprocessed a 25K+ entity-level financial news dataset for entity-aware sentiment extraction and temporal return forecasting.",
+      "Contributed to the end-to-end ML pipeline architecture, integrating the sentiment-extraction stage with downstream forecasting models.",
+      "Benchmarked multiple models — Ridge, XGBoost, LightGBM, and a PyTorch MLP — for forecasting performance comparison.",
+    ],
+    tech: [
+      "Python",
+      "PyTorch",
+      "Transformers",
+      "XGBoost",
+      "LightGBM",
+      "Scikit-Learn",
+    ],
+    github: "https://github.com/Parvptl/Financial_Sentiment_Forecasting",
     featured: true,
   },
   {
@@ -235,22 +268,29 @@ export const achievements: Achievement[] = [
 export const skillGroups: SkillGroup[] = [
   {
     category: "Languages",
-    skills: ["C++", "Python", "TypeScript", "Java", "SQL"],
+    skills: ["C++", "Python", "Java", "TypeScript"],
+  },
+  {
+    category: "Databases",
+    skills: ["PostgreSQL", "MySQL", "SQL", "Supabase"],
   },
   {
     category: "Frameworks",
     skills: ["Next.js", "React", "FastAPI", "Tailwind CSS"],
   },
   {
+    category: "Security & Identity",
+    skills: ["Okta CIC", "IAM", "OAuth", "RBAC"],
+  },
+  {
     category: "Infrastructure",
-    skills: ["Docker", "Kubernetes", "Supabase", "PostgreSQL", "Git"],
+    skills: ["Docker", "Kubernetes", "Git"],
   },
   {
     category: "Concepts",
     skills: [
       "Data Structures & Algorithms",
       "System Design",
-      "RBAC",
       "OOP",
       "DBMS",
       "REST APIs",

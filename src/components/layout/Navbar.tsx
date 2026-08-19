@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll } from "framer-motion";
 import { navLinks, siteConfig } from "@/lib/data";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const { scrollYProgress } = useScroll();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,13 +28,6 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const handleLinkClick = (href: string) => {
-    setMenuOpen(false);
-    const id = href.replace("#", "");
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
     <header
@@ -66,16 +60,17 @@ export default function Navbar() {
             const isActive = activeSection === id;
             return (
               <li key={link.href}>
-                <button
-                  onClick={() => handleLinkClick(link.href)}
-                  className={`px-3 py-2 text-sm rounded-md font-medium transition-all duration-200 ${
+                <a
+                  href={link.href}
+                  aria-current={isActive ? "location" : undefined}
+                  className={`inline-block px-3 py-2 text-sm rounded-md font-medium transition-all duration-200 ${
                     isActive
                       ? "text-violet-400"
                       : "text-neutral-400 hover:text-neutral-100"
                   }`}
                 >
                   {link.label}
-                </button>
+                </a>
               </li>
             );
           })}
@@ -134,12 +129,13 @@ export default function Navbar() {
             <ul className="px-6 py-4 space-y-1" role="list">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <button
-                    onClick={() => handleLinkClick(link.href)}
-                    className="w-full text-left px-3 py-2.5 text-sm text-neutral-300 hover:text-violet-400 hover:bg-violet-500/5 rounded-md transition-colors"
+                  <a
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="block px-3 py-2.5 text-sm text-neutral-300 hover:text-violet-400 hover:bg-violet-500/5 rounded-md transition-colors"
                   >
                     {link.label}
-                  </button>
+                  </a>
                 </li>
               ))}
               <li className="pt-2 flex gap-2">
@@ -163,6 +159,13 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Scroll progress */}
+      <motion.div
+        className="absolute top-[66px] left-0 right-0 h-[2px] origin-left bg-gradient-to-r from-violet-600 via-violet-400 to-fuchsia-400"
+        style={{ scaleX: scrollYProgress }}
+        aria-hidden="true"
+      />
     </header>
   );
 }

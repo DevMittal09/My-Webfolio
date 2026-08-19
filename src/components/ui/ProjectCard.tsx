@@ -23,7 +23,7 @@ function ArrowIcon() {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <div className="beam-border group h-full">
+    <article className="beam-border group h-full">
       <div className="beam-border-inner flex flex-col p-6">
         <div className="flex items-start justify-between gap-4 mb-3">
           <div>
@@ -65,6 +65,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           ))}
         </div>
       </div>
-    </div>
+    </article>
   );
 }

@@ -10,6 +10,13 @@ export default function Footer() {
         </p>
         <div className="flex items-center gap-6">
           <a
+            href="/resume.pdf"
+            download="Dev_Mittal_Resume.pdf"
+            className="text-neutral-500 hover:text-violet-400 text-sm font-mono transition-colors"
+          >
+            Resume
+          </a>
+          <a
             href={siteConfig.github}
             target="_blank"
             rel="noopener noreferrer"
