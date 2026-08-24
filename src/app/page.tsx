@@ -8,10 +8,13 @@ import Architecture from "@/components/sections/Architecture";
 import Achievements from "@/components/sections/Achievements";
 import Skills from "@/components/sections/Skills";
 import Contact from "@/components/sections/Contact";
+import CursorGlow from "@/components/ui/CursorGlow";
+import ScrollToTop from "@/components/ui/ScrollToTop";
 
 export default function Home() {
   return (
     <>
+      <CursorGlow />
       <Navbar />
       <main id="main">
         <Hero />
@@ -24,6 +27,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <ScrollToTop />
     </>
   );
 }

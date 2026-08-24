@@ -73,7 +73,7 @@ export default function Contact() {
             <AnimatedSection delay={0.2}>
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="inline-flex items-center gap-2 mt-4 px-5 py-3 rounded-lg bg-violet-600 text-white text-sm font-semibold hover:bg-violet-500 transition-colors duration-200"
+                className="btn-shine inline-flex items-center gap-2 mt-4 px-6 py-3 rounded-lg bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white text-sm font-semibold hover:shadow-[0_0_28px_rgba(139,92,246,0.45)] hover:scale-[1.03] active:scale-95 transition-all duration-200"
               >
                 <EmailIcon />
                 Send me an email
@@ -91,20 +91,22 @@ export default function Contact() {
                     href={link.href}
                     target={link.icon !== "email" ? "_blank" : undefined}
                     rel={link.icon !== "email" ? "noopener noreferrer" : undefined}
-                    className="flex items-center gap-3 p-4 rounded-xl bg-[#111111] border border-neutral-800 hover:border-violet-500/40 hover:bg-violet-500/5 transition-all duration-200 group"
+                    className="spotlight-card flex items-center gap-3 p-4 group"
                   >
-                    <div className="text-neutral-500 group-hover:text-violet-400 transition-colors">
-                      <Icon />
-                    </div>
-                    <div>
-                      <p className="text-neutral-300 text-sm font-medium capitalize group-hover:text-violet-300 transition-colors">
-                        {link.icon === "email" ? "Email" : link.label}
-                      </p>
-                      {link.icon === "email" && (
-                        <p className="text-neutral-600 text-xs font-mono truncate max-w-[140px]">
-                          {siteConfig.email}
+                    <div className="relative z-10 flex items-center gap-3">
+                      <div className="text-neutral-500 group-hover:text-violet-400 group-hover:scale-110 transition-all duration-200">
+                        <Icon />
+                      </div>
+                      <div>
+                        <p className="text-neutral-300 text-sm font-medium capitalize group-hover:text-violet-300 transition-colors">
+                          {link.icon === "email" ? "Email" : link.label}
                         </p>
-                      )}
+                        {link.icon === "email" && (
+                          <p className="text-neutral-600 text-xs font-mono truncate max-w-[140px]">
+                            {siteConfig.email}
+                          </p>
+                        )}
+                      </div>
                     </div>
                   </a>
                 </AnimatedSection>

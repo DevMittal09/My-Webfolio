@@ -2,7 +2,11 @@ import { siteConfig } from "@/lib/data";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-neutral-800 py-8 px-6">
+    <footer className="relative py-8 px-6">
+      <div
+        className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-500/50 to-transparent"
+        aria-hidden="true"
+      />
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-neutral-500 text-sm font-mono">
           &copy; {new Date().getFullYear()} {siteConfig.name}. Built with

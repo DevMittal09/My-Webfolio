@@ -44,7 +44,7 @@ export default function Navbar() {
         {/* Logo */}
         <a
           href="#"
-          className="font-mono text-sm font-semibold text-violet-400 tracking-wider hover:text-violet-300 transition-colors"
+          className="font-mono text-sm font-semibold text-violet-400 tracking-wider hover:text-violet-300 hover:drop-shadow-[0_0_10px_rgba(139,92,246,0.7)] transition-all"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
           {siteConfig.name.split(" ")[0].toLowerCase()}.
@@ -63,13 +63,21 @@ export default function Navbar() {
                 <a
                   href={link.href}
                   aria-current={isActive ? "location" : undefined}
-                  className={`inline-block px-3 py-2 text-sm rounded-md font-medium transition-all duration-200 ${
+                  className={`relative inline-block px-3 py-2 text-sm rounded-md font-medium transition-colors duration-200 ${
                     isActive
-                      ? "text-violet-400"
+                      ? "text-violet-300"
                       : "text-neutral-400 hover:text-neutral-100"
                   }`}
                 >
-                  {link.label}
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-pill"
+                      className="absolute inset-0 rounded-md bg-violet-500/10 border border-violet-500/30"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      aria-hidden="true"
+                    />
+                  )}
+                  <span className="relative z-10">{link.label}</span>
                 </a>
               </li>
             );
@@ -81,7 +89,7 @@ export default function Navbar() {
           <a
             href="/resume.pdf"
             download="Dev_Mittal_Resume.pdf"
-            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-md bg-violet-600/90 text-white text-sm font-medium hover:bg-violet-500 hover:scale-105 hover:shadow-[0_0_16px_rgba(139,92,246,0.45)] active:scale-95 transition-all duration-200"
+            className="btn-shine inline-flex items-center gap-1.5 px-4 py-1.5 rounded-md bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white text-sm font-medium hover:scale-105 hover:shadow-[0_0_16px_rgba(139,92,246,0.45)] active:scale-95 transition-all duration-200"
           >
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
@@ -110,9 +118,21 @@ export default function Navbar() {
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
         >
-          <span className="block w-5 h-px bg-current mb-1.5 transition-all" />
-          <span className="block w-5 h-px bg-current mb-1.5 transition-all" />
-          <span className="block w-5 h-px bg-current transition-all" />
+          <span
+            className={`block w-5 h-px bg-current transition-all duration-200 ${
+              menuOpen ? "rotate-45 translate-y-[7px]" : "mb-1.5"
+            }`}
+          />
+          <span
+            className={`block w-5 h-px bg-current transition-all duration-200 ${
+              menuOpen ? "opacity-0" : "mb-1.5"
+            }`}
+          />
+          <span
+            className={`block w-5 h-px bg-current transition-all duration-200 ${
+              menuOpen ? "-rotate-45 -translate-y-[7px]" : ""
+            }`}
+          />
         </button>
       </nav>
 
@@ -142,7 +162,7 @@ export default function Navbar() {
                 <a
                   href="/resume.pdf"
                   download="Dev_Mittal_Resume.pdf"
-                  className="flex-1 text-center px-3 py-2.5 text-sm bg-violet-600 text-white rounded-md font-medium"
+                  className="flex-1 text-center px-3 py-2.5 text-sm bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white rounded-md font-medium"
                 >
                   ↓ Resume
                 </a>

@@ -1,6 +1,11 @@
+"use client";
+
+import { useRef } from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import SectionHeading from "@/components/ui/SectionHeading";
 import TechTag from "@/components/ui/TechTag";
+import TiltCard from "@/components/ui/TiltCard";
 import { experiences } from "@/lib/data";
 
 function GitHubIcon() {
@@ -12,6 +17,13 @@ function GitHubIcon() {
 }
 
 export default function Experience() {
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 85%", "end 40%"],
+  });
+  const lineScale = useSpring(scrollYProgress, { stiffness: 90, damping: 22 });
+
   return (
     <section
       id="experience"
@@ -26,22 +38,37 @@ export default function Experience() {
           />
         </AnimatedSection>
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-0 md:left-8 top-0 bottom-0 w-px bg-neutral-800" aria-hidden="true" />
+        <div className="relative" ref={timelineRef}>
+          {/* Timeline track */}
+          <div
+            className="absolute left-0 md:left-8 top-0 bottom-0 w-px bg-neutral-800"
+            aria-hidden="true"
+          />
+          {/* Scroll-drawn gradient line */}
+          <motion.div
+            className="absolute left-0 md:left-8 top-0 bottom-0 w-px origin-top bg-gradient-to-b from-violet-500 via-fuchsia-400 to-violet-500/0"
+            style={{ scaleY: lineScale }}
+            aria-hidden="true"
+          />
 
           <div className="space-y-10">
             {experiences.map((exp, i) => (
               <AnimatedSection key={i} delay={0.1}>
                 <div className="relative pl-8 md:pl-20">
-                  {/* Dot */}
-                  <div
-                    className="absolute left-[-4px] md:left-[28px] top-6 w-2.5 h-2.5 rounded-full bg-violet-500 border-2 border-[#0d0d0d] ring-2 ring-violet-500/30"
+                  {/* Dot + pulse ring */}
+                  <span
+                    className="absolute left-[-4px] md:left-[28px] top-6 w-2.5 h-2.5 rounded-full bg-violet-500 ring-2 ring-violet-500/30 z-10"
+                    aria-hidden="true"
+                  />
+                  <motion.span
+                    className="absolute left-[-4px] md:left-[28px] top-6 w-2.5 h-2.5 rounded-full bg-violet-500/60"
+                    animate={{ scale: [1, 2.4], opacity: [0.6, 0] }}
+                    transition={{ duration: 1.8, repeat: Infinity, ease: "easeOut" }}
                     aria-hidden="true"
                   />
 
-                  <article className="beam-border">
-                    <div className="beam-border-inner p-6 md:p-8">
+                  <TiltCard tiltMax={3}>
+                    <article className="p-6 md:p-8">
                       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-5">
                         <div>
                           <h3 className="text-lg font-semibold text-neutral-100">
@@ -87,8 +114,8 @@ export default function Experience() {
                           <TechTag key={t} label={t} variant="accent" />
                         ))}
                       </div>
-                    </div>
-                  </article>
+                    </article>
+                  </TiltCard>
                 </div>
               </AnimatedSection>
             ))}

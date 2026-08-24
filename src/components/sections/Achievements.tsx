@@ -1,5 +1,6 @@
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import SectionHeading from "@/components/ui/SectionHeading";
+import TiltCard from "@/components/ui/TiltCard";
 import { achievements, positionsOfResponsibility, siteConfig } from "@/lib/data";
 
 function TrophyIcon() {
@@ -60,9 +61,9 @@ export default function Achievements() {
             const Icon = iconMap[achievement.icon as keyof typeof iconMap];
             return (
               <AnimatedSection key={achievement.title} delay={0.1 + i * 0.1} className="h-full">
-                <div className="beam-border h-full group">
-                  <div className="beam-border-inner p-6 flex flex-col">
-                    <div className="w-10 h-10 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400 mb-4 group-hover:bg-violet-500/20 transition-colors">
+                <TiltCard tiltMax={5} className="group h-full">
+                  <div className="p-6 flex flex-col h-full">
+                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-violet-500/25 to-fuchsia-500/10 border border-violet-500/25 flex items-center justify-center text-violet-300 mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6">
                       <Icon />
                     </div>
                     <h3 className="text-sm font-semibold text-neutral-100 mb-2 leading-snug">
@@ -93,7 +94,7 @@ export default function Achievements() {
                       </div>
                     )}
                   </div>
-                </div>
+                </TiltCard>
               </AnimatedSection>
             );
           })}
@@ -109,29 +110,31 @@ export default function Achievements() {
         <div className="grid md:grid-cols-2 gap-5">
           {positionsOfResponsibility.map((pos, i) => (
             <AnimatedSection key={pos.title} delay={0.45 + i * 0.1}>
-              <div className="bg-[#111111] border border-neutral-800 rounded-xl p-6 hover:border-violet-500/25 transition-all duration-300 h-full">
-                <div className="flex items-start justify-between gap-4 mb-1">
-                  <h3 className="text-sm font-semibold text-neutral-100 leading-snug">
-                    {pos.title}
-                  </h3>
-                  <span className="text-neutral-600 text-xs font-mono flex-shrink-0 bg-neutral-900 px-2 py-0.5 rounded border border-neutral-800">
-                    {pos.period}
-                  </span>
+              <div className="spotlight-card p-6 h-full">
+                <div className="relative z-10">
+                  <div className="flex items-start justify-between gap-4 mb-1">
+                    <h3 className="text-sm font-semibold text-neutral-100 leading-snug">
+                      {pos.title}
+                    </h3>
+                    <span className="text-neutral-600 text-xs font-mono flex-shrink-0 bg-neutral-900 px-2 py-0.5 rounded border border-neutral-800">
+                      {pos.period}
+                    </span>
+                  </div>
+                  <p className="text-neutral-500 text-xs mb-3 italic">
+                    {pos.description}
+                  </p>
+                  <ul className="space-y-2">
+                    {pos.bullets.map((b, j) => (
+                      <li
+                        key={j}
+                        className="flex items-start gap-2 text-xs text-neutral-400 leading-relaxed"
+                      >
+                        <span className="text-violet-500 flex-shrink-0 mt-0.5">▸</span>
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <p className="text-neutral-500 text-xs mb-3 italic">
-                  {pos.description}
-                </p>
-                <ul className="space-y-2">
-                  {pos.bullets.map((b, j) => (
-                    <li
-                      key={j}
-                      className="flex items-start gap-2 text-xs text-neutral-400 leading-relaxed"
-                    >
-                      <span className="text-violet-500 flex-shrink-0 mt-0.5">▸</span>
-                      {b}
-                    </li>
-                  ))}
-                </ul>
               </div>
             </AnimatedSection>
           ))}

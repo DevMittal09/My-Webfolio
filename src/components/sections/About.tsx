@@ -1,5 +1,7 @@
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import SectionHeading from "@/components/ui/SectionHeading";
+import TiltCard from "@/components/ui/TiltCard";
+import CountUp from "@/components/ui/CountUp";
 import { aboutParagraphs, aboutStats, siteConfig } from "@/lib/data";
 
 export default function About() {
@@ -26,22 +28,24 @@ export default function About() {
             ))}
 
             <AnimatedSection delay={0.35}>
-              <div className="mt-6 p-4 rounded-lg border border-neutral-800 bg-neutral-900/40">
-                <p className="text-neutral-500 text-xs font-mono uppercase tracking-wider mb-2">
-                  Education
-                </p>
-                <p className="text-neutral-200 font-medium">
-                  {siteConfig.college}
-                </p>
-                <p className="text-neutral-400 text-sm">
-                  {siteConfig.degree} &nbsp;·&nbsp; CGPA:{" "}
-                  <span className="text-violet-400 font-mono font-semibold">
-                    {siteConfig.cgpa}
-                  </span>
-                </p>
-                <p className="text-neutral-500 text-xs font-mono mt-1">
-                  Aug 2023 – July 2027 (tentative)
-                </p>
+              <div className="mt-6 rounded-xl p-[1px] bg-gradient-to-br from-violet-500/50 via-neutral-800 to-fuchsia-500/40 transition-shadow duration-300 hover:shadow-[0_0_24px_rgba(139,92,246,0.15)]">
+                <div className="rounded-[calc(0.75rem-1px)] bg-[#0d0d0d] p-4">
+                  <p className="text-neutral-500 text-xs font-mono uppercase tracking-wider mb-2">
+                    Education
+                  </p>
+                  <p className="text-neutral-200 font-medium">
+                    {siteConfig.college}
+                  </p>
+                  <p className="text-neutral-400 text-sm">
+                    {siteConfig.degree} &nbsp;·&nbsp; CGPA:{" "}
+                    <span className="text-violet-400 font-mono font-semibold">
+                      {siteConfig.cgpa}
+                    </span>
+                  </p>
+                  <p className="text-neutral-500 text-xs font-mono mt-1">
+                    Aug 2023 – July 2027 (tentative)
+                  </p>
+                </div>
               </div>
             </AnimatedSection>
           </div>
@@ -50,14 +54,16 @@ export default function About() {
           <div className="grid grid-cols-2 gap-4">
             {aboutStats.map((stat, i) => (
               <AnimatedSection key={stat.label} delay={0.1 + i * 0.08} direction="right">
-                <div className="bg-[#111111] border border-neutral-800 rounded-xl p-5 hover:border-violet-500/30 transition-colors duration-300 group">
-                  <p className="text-3xl font-bold font-mono text-violet-400 group-hover:text-violet-300 transition-colors mb-2">
-                    {stat.value}
-                  </p>
-                  <p className="text-neutral-500 text-xs leading-snug">
-                    {stat.label}
-                  </p>
-                </div>
+                <TiltCard tiltMax={5} className="h-full">
+                  <div className="p-5">
+                    <p className="text-3xl font-bold font-mono mb-2">
+                      <CountUp value={stat.value} className="gradient-text" />
+                    </p>
+                    <p className="text-neutral-500 text-xs leading-snug">
+                      {stat.label}
+                    </p>
+                  </div>
+                </TiltCard>
               </AnimatedSection>
             ))}
           </div>

@@ -2,6 +2,9 @@
 
 import { motion } from "framer-motion";
 import { siteConfig, heroStack } from "@/lib/data";
+import ParticleField from "@/components/ui/ParticleField";
+import Magnetic from "@/components/ui/Magnetic";
+import Typewriter from "@/components/ui/Typewriter";
 
 function GitHubIcon({ size = 20 }: { size?: number }) {
   return (
@@ -57,6 +60,13 @@ const item = {
   show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
 };
 
+const roles = [
+  "Backend & Full-Stack Engineer",
+  "Cloud-Native Systems Builder",
+  "IAM & Security Enthusiast",
+  "Competitive Programmer",
+];
+
 const socialLinks = [
   { href: siteConfig.github,    icon: GitHubIcon,   label: "GitHub" },
   { href: siteConfig.linkedin,  icon: LinkedInIcon, label: "LinkedIn" },
@@ -87,6 +97,17 @@ export default function Hero() {
         aria-hidden="true"
       />
 
+      {/* Floating gradient orbs */}
+      <div
+        className="orb w-[420px] h-[420px] bg-violet-600 top-[-80px] left-[-120px]"
+        aria-hidden="true"
+      />
+      <div
+        className="orb w-[360px] h-[360px] bg-fuchsia-600 bottom-[-60px] right-[-100px]"
+        style={{ animationDelay: "-8s" }}
+        aria-hidden="true"
+      />
+
       {/* Radial glow */}
       <div
         className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none"
@@ -97,6 +118,9 @@ export default function Hero() {
         aria-hidden="true"
       />
 
+      {/* Interactive particle constellation */}
+      <ParticleField />
+
       <motion.div
         variants={container}
         initial="hidden"
@@ -105,7 +129,7 @@ export default function Hero() {
       >
         {/* Status chip */}
         <motion.div variants={item} className="flex justify-center mb-8">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-500/20 bg-violet-500/5 text-neutral-400 text-xs font-mono">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-500/20 bg-violet-500/5 text-neutral-400 text-xs font-mono backdrop-blur-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
             Available for internships &amp; opportunities
           </span>
@@ -114,18 +138,21 @@ export default function Hero() {
         {/* Name */}
         <motion.h1
           variants={item}
-          className="text-5xl md:text-7xl font-bold tracking-tight text-neutral-100 mb-4"
+          className="text-5xl md:text-7xl font-bold tracking-tight mb-4"
         >
-          {siteConfig.name}
+          <span className="gradient-text">{siteConfig.name}</span>
         </motion.h1>
 
-        {/* Tagline */}
-        <motion.p
+        {/* Typewriter roles */}
+        <motion.div
           variants={item}
-          className="text-xl md:text-2xl font-light text-violet-400 mb-6 font-mono tracking-tight"
+          className="flex items-center justify-center gap-2 text-lg md:text-2xl font-mono text-violet-300 mb-6 h-8 md:h-9"
         >
-          {siteConfig.tagline}
-        </motion.p>
+          <span className="text-fuchsia-400" aria-hidden="true">
+            ›
+          </span>
+          <Typewriter words={roles} />
+        </motion.div>
 
         {/* One-liner */}
         <motion.p
@@ -135,20 +162,22 @@ export default function Hero() {
           {siteConfig.oneLiner}
         </motion.p>
 
-        {/* Tech stack chips */}
+        {/* Tech stack marquee */}
         <motion.div
           variants={item}
-          className="flex flex-wrap items-center justify-center gap-2 mb-12"
+          className="marquee max-w-2xl mx-auto mb-12"
           aria-label="Tech stack"
         >
-          {heroStack.map((tech) => (
-            <span
-              key={tech}
-              className="px-3 py-1 rounded-md bg-neutral-900/80 border border-neutral-800 text-neutral-300 text-xs font-mono hover:border-violet-500/30 hover:text-violet-300 transition-colors duration-200"
-            >
-              {tech}
-            </span>
-          ))}
+          <div className="marquee-track">
+            {[...heroStack, ...heroStack].map((tech, i) => (
+              <span
+                key={`${tech}-${i}`}
+                className="mr-3 px-3.5 py-1.5 rounded-md bg-neutral-900/80 border border-neutral-800 text-neutral-300 text-xs font-mono whitespace-nowrap hover:border-violet-500/40 hover:text-violet-300 transition-colors duration-200"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
         </motion.div>
 
         {/* CTA buttons */}
@@ -156,19 +185,20 @@ export default function Hero() {
           variants={item}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 flex-wrap"
         >
-          {/* Icon-only social buttons */}
+          {/* Magnetic social buttons */}
           <div className="flex items-center gap-3">
             {socialLinks.map(({ href, icon: Icon, label }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-                className="w-11 h-11 rounded-full bg-neutral-900 border border-neutral-700 flex items-center justify-center text-neutral-400 hover:text-violet-400 hover:border-violet-500/60 hover:scale-110 hover:shadow-[0_0_18px_rgba(139,92,246,0.35)] active:scale-95 transition-all duration-200"
-              >
-                <Icon size={18} />
-              </a>
+              <Magnetic key={label}>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="w-11 h-11 rounded-full bg-neutral-900 border border-neutral-700 flex items-center justify-center text-neutral-400 hover:text-violet-400 hover:border-violet-500/60 hover:shadow-[0_0_18px_rgba(139,92,246,0.35)] transition-colors duration-200"
+                >
+                  <Icon size={18} />
+                </a>
+              </Magnetic>
             ))}
           </div>
 
@@ -176,28 +206,32 @@ export default function Hero() {
           <div className="hidden sm:block w-px h-8 bg-neutral-800" aria-hidden="true" />
 
           {/* Download CV */}
-          <a
-            href="/resume.pdf"
-            download="Dev_Mittal_Resume.pdf"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-violet-600 text-white text-sm font-semibold hover:bg-violet-500 hover:scale-105 hover:shadow-[0_0_22px_rgba(139,92,246,0.5)] active:scale-95 transition-all duration-200"
-          >
-            <DownloadIcon />
-            Download CV
-          </a>
+          <Magnetic strength={0.2}>
+            <a
+              href="/resume.pdf"
+              download="Dev_Mittal_Resume.pdf"
+              className="btn-shine inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white text-sm font-semibold hover:shadow-[0_0_26px_rgba(139,92,246,0.55)] hover:scale-105 active:scale-95 transition-all duration-200"
+            >
+              <DownloadIcon />
+              Download CV
+            </a>
+          </Magnetic>
 
           {/* View My Work */}
-          <a
-            href="#projects"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-neutral-700 text-neutral-300 text-sm font-medium hover:border-violet-500/60 hover:text-violet-400 hover:scale-105 hover:shadow-[0_0_16px_rgba(139,92,246,0.2)] active:scale-95 transition-all duration-200"
-          >
-            View My Work
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </a>
+          <Magnetic strength={0.2}>
+            <a
+              href="#projects"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-neutral-700 text-neutral-300 text-sm font-medium hover:border-violet-500/60 hover:text-violet-400 hover:shadow-[0_0_16px_rgba(139,92,246,0.2)] hover:scale-105 active:scale-95 transition-all duration-200"
+            >
+              View My Work
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </Magnetic>
         </motion.div>
 
-        {/* Scroll arrow — clickable, no text */}
+        {/* Scroll arrow */}
         <motion.div
           variants={item}
           className="flex justify-center"

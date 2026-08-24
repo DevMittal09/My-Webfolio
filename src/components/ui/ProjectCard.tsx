@@ -1,4 +1,5 @@
 import TechTag from "@/components/ui/TechTag";
+import TiltCard from "@/components/ui/TiltCard";
 import type { Project } from "@/lib/types";
 
 interface ProjectCardProps {
@@ -23,11 +24,11 @@ function ArrowIcon() {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <article className="beam-border group h-full">
-      <div className="beam-border-inner flex flex-col p-6">
+    <TiltCard tiltMax={5} className="group h-full">
+      <article className="flex h-full flex-col p-6">
         <div className="flex items-start justify-between gap-4 mb-3">
           <div>
-            <h3 className="text-lg font-semibold text-neutral-100 group-hover:text-violet-400 transition-colors duration-200">
+            <h3 className="text-lg font-semibold text-neutral-100 group-hover:text-violet-300 transition-colors duration-200">
               {project.title}
             </h3>
             <p className="text-neutral-500 text-sm font-mono mt-0.5">
@@ -38,11 +39,13 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-shrink-0 flex items-center gap-1.5 text-neutral-500 hover:text-violet-400 hover:scale-110 active:scale-95 transition-all duration-200 text-xs font-mono"
+            className="flex-shrink-0 flex items-center gap-1.5 px-2.5 py-1.5 rounded-md border border-neutral-800 text-neutral-500 text-xs font-mono transition-all duration-200 hover:text-violet-300 hover:border-violet-500/50 hover:shadow-[0_0_14px_rgba(139,92,246,0.25)] hover:scale-105 active:scale-95"
             aria-label={`View ${project.title} on GitHub`}
           >
             <GitHubIcon />
-            <ArrowIcon />
+            <span className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+              <ArrowIcon />
+            </span>
           </a>
         </div>
 
@@ -64,7 +67,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             <TechTag key={t} label={t} />
           ))}
         </div>
-      </div>
-    </article>
+      </article>
+    </TiltCard>
   );
 }
