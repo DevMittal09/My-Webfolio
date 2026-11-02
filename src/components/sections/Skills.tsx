@@ -7,7 +7,8 @@ import { skillGroups } from "@/lib/data";
 const categoryColors: Record<string, string> = {
   Languages: "#a78bfa",
   Databases: "#3b82f6",
-  Frameworks: "#8b5cf6",
+  "Product Building": "#8b5cf6",
+  "Data & AI/ML": "#ec4899",
   "Security & Identity": "#ef4444",
   Infrastructure: "#10b981",
   Concepts: "#f59e0b",

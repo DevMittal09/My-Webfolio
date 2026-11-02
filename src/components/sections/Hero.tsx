@@ -61,9 +61,9 @@ const item = {
 };
 
 const roles = [
-  "Backend & Full-Stack Engineer",
-  "Cloud-Native Systems Builder",
-  "IAM & Security Enthusiast",
+  "Founding CTO @ Snappito",
+  "Full-Stack Product Engineer",
+  "Backend & Systems Builder",
   "Competitive Programmer",
 ];
 

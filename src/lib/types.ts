@@ -4,7 +4,12 @@ export interface Project {
   description: string;
   bullets: string[];
   tech: string[];
-  github: string;
+  /** Public source code. Omit for private / client repos. */
+  github?: string;
+  /** Live product URL. */
+  live?: string;
+  /** Short badge, e.g. "In Production" or "Private repo". */
+  status?: string;
   featured: boolean;
 }
 
@@ -12,7 +17,10 @@ export interface Experience {
   company: string;
   role: string;
   period: string;
+  location?: string;
   github?: string;
+  /** External link, e.g. company website or certificate. */
+  link?: { href: string; label: string };
   bullets: string[];
   tech: string[];
 }

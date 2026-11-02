@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { siteConfig, heroStack } from "@/lib/data";
 
-export const alt = "Dev Mittal — Backend & Full-Stack Engineer";
+export const alt = "Dev Mittal — Full-Stack Engineer & Founding CTO";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -35,7 +35,7 @@ export default function OpenGraphImage() {
             marginBottom: 28,
           }}
         >
-          {"Backend & Full-Stack Engineer · IIT Palakkad"}
+          {"Founding CTO @ Snappito · IIT Palakkad"}
         </div>
         <div
           style={{

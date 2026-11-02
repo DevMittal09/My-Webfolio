@@ -14,7 +14,7 @@ export default function Projects() {
           <SectionHeading
             label="Projects"
             title="What I've built"
-            description="Production systems, cloud-native platforms, and real-world engineering projects."
+            description="Products with real users, client systems, cloud-native platforms, and ML research."
           />
         </AnimatedSection>
 

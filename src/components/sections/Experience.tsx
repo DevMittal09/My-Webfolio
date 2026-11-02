@@ -77,8 +77,23 @@ export default function Experience() {
                           <p className="text-violet-400 font-mono text-sm mt-0.5">
                             {exp.company}
                           </p>
+                          {exp.location && (
+                            <p className="text-neutral-600 text-xs font-mono mt-1">
+                              {exp.location}
+                            </p>
+                          )}
                         </div>
-                        <div className="flex items-center gap-3 flex-shrink-0">
+                        <div className="flex items-center gap-3 flex-shrink-0 flex-wrap">
+                          {exp.link && (
+                            <a
+                              href={exp.link.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-neutral-500 hover:text-violet-400 transition-colors text-xs font-mono"
+                            >
+                              {exp.link.label} ↗
+                            </a>
+                          )}
                           <span className="text-neutral-500 text-sm font-mono bg-neutral-900 px-3 py-1 rounded-md border border-neutral-800">
                             {exp.period}
                           </span>

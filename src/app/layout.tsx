@@ -18,13 +18,15 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  title: "Dev Mittal — Backend & Full-Stack Engineer",
+  title: "Dev Mittal — Full-Stack Engineer & Founding CTO",
   description:
-    "Portfolio of Dev Mittal — IIT Palakkad. Backend-focused engineer building production-grade systems: cloud-native platforms, secure campus infrastructure, and scalable APIs.",
+    "Portfolio of Dev Mittal — final-year IIT Palakkad student, Founding CTO of Snappito, and builder of IIT Palakkad's guest house booking portal. Full-stack products with Next.js, TypeScript, PostgreSQL, FastAPI, Docker and Kubernetes.",
   keywords: [
     "Dev Mittal",
     "IIT Palakkad",
     "Backend Engineer",
+    "Snappito",
+    "Founding CTO",
     "Full-Stack Developer",
     "Next.js",
     "TypeScript",
@@ -40,9 +42,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   robots: { index: true, follow: true },
   openGraph: {
-    title: "Dev Mittal — Backend & Full-Stack Engineer",
+    title: "Dev Mittal — Full-Stack Engineer & Founding CTO",
     description:
-      "Engineering reliable systems with real-world impact. IIT Palakkad | Next.js · TypeScript · FastAPI · Docker · Kubernetes",
+      "Founding CTO at Snappito · IIT Palakkad | Next.js · TypeScript · PostgreSQL · FastAPI · Docker · Kubernetes",
     url: "/",
     siteName: "Dev Mittal",
     locale: "en_US",
@@ -50,9 +52,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dev Mittal — Backend & Full-Stack Engineer",
+    title: "Dev Mittal — Full-Stack Engineer & Founding CTO",
     description:
-      "Engineering reliable systems with real-world impact. IIT Palakkad.",
+      "Founding CTO at Snappito · Final-year student at IIT Palakkad.",
   },
 };
 
@@ -67,7 +69,7 @@ const personJsonLd = {
   name: siteConfig.name,
   url: siteConfig.url,
   email: `mailto:${siteConfig.email}`,
-  jobTitle: "Backend & Full-Stack Engineer",
+  jobTitle: "Founding Member & CTO, Snappito",
   alumniOf: {
     "@type": "CollegeOrUniversity",
     name: "Indian Institute of Technology Palakkad",
@@ -91,6 +93,8 @@ const personJsonLd = {
     "Supabase",
     "Okta Customer Identity Cloud",
     "Identity & Access Management",
+    "PyTorch",
+    "Hugging Face Transformers",
     "System Design",
   ],
 };

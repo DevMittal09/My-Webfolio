@@ -12,7 +12,7 @@ export default function About() {
           <SectionHeading
             label="About"
             title="Who I am"
-            description="A systems focused engineer who builds things that need to work in production."
+            description="A product-minded engineer who builds things that need to work in production."
           />
         </AnimatedSection>
 
@@ -43,7 +43,7 @@ export default function About() {
                     </span>
                   </p>
                   <p className="text-neutral-500 text-xs font-mono mt-1">
-                    Aug 2023 – July 2027 (tentative)
+                    Aug 2023 – Jul 2027
                   </p>
                 </div>
               </div>

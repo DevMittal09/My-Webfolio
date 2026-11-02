@@ -22,6 +22,9 @@ function ArrowIcon() {
   );
 }
 
+const linkClass =
+  "flex items-center gap-1.5 px-2.5 py-1.5 rounded-md border border-neutral-800 text-neutral-500 text-xs font-mono transition-all duration-200 hover:text-violet-300 hover:border-violet-500/50 hover:shadow-[0_0_14px_rgba(139,92,246,0.25)] hover:scale-105 active:scale-95";
+
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
     <TiltCard tiltMax={5} className="group h-full">
@@ -34,19 +37,43 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             <p className="text-neutral-500 text-sm font-mono mt-0.5">
               {project.subtitle}
             </p>
+            {project.status && (
+              <span className="inline-flex items-center gap-1.5 mt-2 px-2 py-0.5 rounded border border-green-500/20 bg-green-500/10 text-green-400 text-[11px] font-mono">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-400" aria-hidden="true" />
+                {project.status}
+              </span>
+            )}
           </div>
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-shrink-0 flex items-center gap-1.5 px-2.5 py-1.5 rounded-md border border-neutral-800 text-neutral-500 text-xs font-mono transition-all duration-200 hover:text-violet-300 hover:border-violet-500/50 hover:shadow-[0_0_14px_rgba(139,92,246,0.25)] hover:scale-105 active:scale-95"
-            aria-label={`View ${project.title} on GitHub`}
-          >
-            <GitHubIcon />
-            <span className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-              <ArrowIcon />
-            </span>
-          </a>
+          <div className="flex flex-shrink-0 items-center gap-2">
+            {project.live && (
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={linkClass}
+                aria-label={`Visit ${project.title} live site`}
+              >
+                Live
+                <span className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                  <ArrowIcon />
+                </span>
+              </a>
+            )}
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={linkClass}
+                aria-label={`View ${project.title} on GitHub`}
+              >
+                <GitHubIcon />
+                <span className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                  <ArrowIcon />
+                </span>
+              </a>
+            )}
+          </div>
         </div>
 
         <p className="text-neutral-400 text-sm leading-relaxed mb-4">
