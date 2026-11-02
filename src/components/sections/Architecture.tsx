@@ -184,8 +184,8 @@ export default function Architecture() {
                     6-role access control with Row-Level Security
                   </p>
                 </div>
-                <span className="px-2.5 py-1 rounded bg-green-500/10 text-green-400 text-xs font-mono border border-green-500/20 flex-shrink-0">
-                  Production
+                <span className="px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 text-xs font-mono border border-amber-500/20 flex-shrink-0">
+                  In Development
                 </span>
               </div>
 

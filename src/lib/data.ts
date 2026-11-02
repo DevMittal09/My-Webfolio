@@ -119,7 +119,6 @@ export const experiences: Experience[] = [
     role: "Administrative Intern",
     period: "Jan 2026 – May 2026",
     location: "Palakkad, Kerala",
-    github: "https://github.com/DevMittal09/GatePassSecuritySystem.git",
     tech: [
       "Next.js",
       "TypeScript",
@@ -129,9 +128,9 @@ export const experiences: Experience[] = [
       "Google OAuth",
     ],
     bullets: [
-      "Developed and deployed a production-grade Campus Security & Gate Pass Management System serving the entire IIT Palakkad campus.",
+      "Developing a Campus Security & Gate Pass Management System for the IIT Palakkad campus, built to digitize gate security workflows.",
       "Engineered secure RBAC with 6 roles using Supabase Row-Level Security, server-side authentication, and domain-restricted Google OAuth.",
-      "Designed real-time QR verification and automated role assignment via PostgreSQL triggers, fully digitizing campus security workflows.",
+      "Designed real-time QR verification and automated role assignment via PostgreSQL triggers.",
     ],
   },
 ];
@@ -216,7 +215,7 @@ export const projects: Project[] = [
   },
   {
     title: "Campus Security & Gate Pass System",
-    subtitle: "Production-Grade Access Control Platform",
+    subtitle: "Campus Access Control Platform",
     description:
       "A full stack campus security portal managing student exit passes, family visits, employee guest passes, and walk in visitor registration with QR based verification.",
     bullets: [
@@ -234,8 +233,7 @@ export const projects: Project[] = [
       "Google OAuth",
       "Resend",
     ],
-    github: "https://github.com/DevMittal09/GatePassSecuritySystem.git",
-    status: "In Production",
+    status: "In development · Private repo",
     featured: true,
   },
   {
